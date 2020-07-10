@@ -14,8 +14,9 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
-    #runs-on: ${{ matrix.os }}
+    #runs-on: self-hosted
+    
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
@@ -33,5 +34,13 @@ jobs:
     - run: sudo  npm run ci
       env:
         CI: true
-
-    
+    - name: depoly
+      env:
+        SSH_PRIVATE_KEY: ${{ secreats.SERVER_SSH_KEY}}
+        ARGS: ' -rltgoDzvo --delete'
+        SOURCE: 'build/'
+        REMOTE_HOST: ${{ secrets.TX_HOST }}
+        REMOTE_USER: ${{ secrets.TX_USER }}
+        TARGET: ${{ secrets.TX_TARGET }}
+        
+      
