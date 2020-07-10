@@ -16,31 +16,29 @@ jobs:
   build:
     #runs-on: self-hosted
     
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node-version: [10.x]
-        os: [ubuntu-latest]
-        #, windows-latest, macos-latest]
-
+    runs-on: ubuntu-lastest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: sudo  npm i -g npminstall && npminstall
-    - run: sudo  npm run ci
-      env:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: use Node.js 10
+       uses: actions/setup-nody@v1
+       with:
+        node-version: 10
+     - name: npm install and build
+       run:
+         npm -i
+         npm run dev
+        npm start
+       env:
         CI: true
-    - name: depoly
-      env:
-        SSH_PRIVATE_KEY: ${{ secreats.SERVER_SSH_KEY}}
-        ARGS: ' -rltgoDzvo --delete'
-        SOURCE: 'build/'
-        REMOTE_HOST: ${{ secrets.TX_HOST }}
-        REMOTE_USER: ${{ secrets.TX_USER }}
-        TARGET: ${{ secrets.TX_TARGET }}
+     - name: depoly
+        uses: TencentCloud/tke-cluster-credential-action@v1
+        env:
+         SSH_PRIVATE_KEY: ${{ secreats.SERVER_SSH_KEY}}
+         ARGS: ' -rltgoDzvo --delete'
+         SOURCE: 'build/'
+         REMOTE_HOST: ${{ secrets.TX_HOST }}
+         REMOTE_USER: ${{ secrets.TX_USER }}
+         TARGET: ${{ secrets.TX_TARGET }}
         
       
