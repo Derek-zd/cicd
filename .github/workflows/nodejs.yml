@@ -30,13 +30,4 @@ jobs:
       env:
         CI: true
 
-    #Deploy
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@v2.0.8
-      env:
-        ssh_PRIVATE_KEY:${{secretes.T4_MR}}
-          REMOTE_HOST: ${{ secrets.47.114.114.202 }}
-          REMOTE_USER: ${{ secrets.root}}
-          REMOTE_PORT: ${{ secrets.T4_MR }}
-          SOURCE: "dist/"
-          TARGET: "/opt/DCpool"
+    
