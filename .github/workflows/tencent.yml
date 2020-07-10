@@ -32,14 +32,15 @@ jobs:
         node-version: 10
     - name: npm install and build
       run:
-        npm -i 
-        npm run dev
+        npm install
+        npm run build
       env:
         CI: true
    
     - name: Deploy
       uses: TencentCloud/tke-cluster-credential-action@v1
       with:
+        secrirt_host: ${{ secrets.TENCENT_CLOUD_HOST }}
         secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
         secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
     
