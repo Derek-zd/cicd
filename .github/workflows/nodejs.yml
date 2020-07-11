@@ -36,22 +36,23 @@ jobs:
 jobs:    #Deploy
   delpoy:
     #   runs-on: ubuntu-latest
-     - name: ssh deploy
+     - name: ssh deploy  
        uses: easingthemes/ssh-deploy@v2.1.4
        with:
     # Private Key  私钥
-        SSH_PRIVATE_KEY: secrets.TENCETN_CLOUD_SSH_PRIVATE_KEY
+        SSH_PRIVATE_KEY: [secrets.TENCETN_CLOUD_SSH_PRIVATE_KEY]
     # Remote host   远程主机
-        REMOTE_HOST:  secrets.TENCETN_CLOUD_HOST
+        REMOTE_HOST:  [secrets.TENCETN_CLOUD_HOST]
     # Remote user  远程主机登录用户
-        REMOTE_USER: root
+        REMOTE_USER: [root]
     # Remote port  远程主机登录端口
-        REMOTE_PORT: 22
+        REMOTE_PORT: [22]
     # optional, default is 22
     # Source directory  源文件 目录
-        SOURCE: . # optional, default is 
+        SOURCE: [.]
+    # optional, default is 
     # Target directory  目标目录
-        TARGET: secrets.TENCETN_CLOUD_TARGET
+        TARGET: [secrets.TENCETN_CLOUD_TARGET]
     # optional, default is /home/REMOTE_USER/
     # Arguments to pass to rsync
     #ARGS: # optional, default is -rltgoDzvO
