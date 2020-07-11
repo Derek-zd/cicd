@@ -16,7 +16,7 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 14.x]
 
-    steps:
+    steps:s
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -30,19 +30,19 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.1.4
       with:
     # Private Key  私钥
-        SSH_PRIVATE_KEY: ${{secrets.TENCETN_CLOUD_SSH_PRIVATE_KEY}}
+        SSH_PRIVATE_KEY: ${{ secrets.PASWD }}
     # Remote host   远程主机
-        REMOTE_HOST: ${{secrets.TENCETN_CLOUD_HOST}}
+        REMOTE_HOST: ${{ secrets.HOST }}
     # Remote user  远程主机登录用户
-        REMOTE_USER: root
+        REMOTE_USER: "root"
     # Remote port  远程主机登录端口
-        REMOTE_PORT: 22
+    #   REMOTE_PORT: 22
     # optional, default is 22
     # Source directory  源文件 目录
-    #    SOURCE: 
+        SOURCE: "."
     # optional, default is 
     # Target directory  目标目录
-        TARGET: ${{secrets.TENCETN_CLOUD_TARGET}}
+        TARGET: ${{ secrets.TARGET }}
     # optional, default is /home/REMOTE_USER/
     # Arguments to pass to rsync
     #ARGS: # optional, default is -rltgoDzvO
