@@ -5,7 +5,7 @@ RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localt
 
 RUN npm config set registry https://registry.npm.taobao.org
 
-WORKDIR /opt/bin/byteark-gateway
+WORKDIR /opt/bin/dc-pool-cms-server
 
 # install dependencies
 COPY package.json .
