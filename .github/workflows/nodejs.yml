@@ -29,7 +29,7 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.1.4
       env:
     # Private Key  私钥
-        SSH_PRIVATE_KEY: ${{ secrets.PASWD }}
+        SSH_PRIVATE_KEY: ${{ secrets.PASSWD }}
     # Remote host   远程主机
         REMOTE_HOST: ${{ secrets.HOST }}
     # Remote user  远程主机登录用户
