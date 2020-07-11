@@ -2,7 +2,6 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
-
 on:
   push:
     branches: [ master ]
@@ -20,14 +19,18 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm i -g npminstall && npminstall
-    - run: npm run ci
-      env:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: use Node.js 10
+       uses: actions/setup-nody@v1
+       with:
+        node-version: 10
+     - name: npm install and build
+       run:
+         npm -i
+         npm run dev
+        npm start
+       env:
         CI: true
 
     #Deploy
