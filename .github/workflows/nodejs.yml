@@ -27,7 +27,7 @@ jobs:
     
     - name: ssh deploy  
       uses: easingthemes/ssh-deploy@v2.1.4
-      with:
+      env:
     # Private Key  私钥
         SSH_PRIVATE_KEY: ${{ secrets.PASWD }}
     # Remote host   远程主机
