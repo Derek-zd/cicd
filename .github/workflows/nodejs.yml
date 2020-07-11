@@ -36,7 +36,7 @@ jobs:
     #Deploy
     delpoy:
     runs-on: ubuntu-latest
-    env:
+    
 - name: ssh deploy
   uses: easingthemes/ssh-deploy@v2.1.4
   with:
