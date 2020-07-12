@@ -14,7 +14,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [10.x]
+  #     node-version: [10.x, 12.x, 14.xa]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -50,7 +51,7 @@ jobs:
     - name: docker build and docker run 
       uses: garygrossgarten/github-action-ssh@release
       with:
-        command: docker build -f /opt/DC_Pool_CMS/Dockerfile -t dcpool-cms-service:test2  
+        command: cd /opt/DC_Pool_CMS/Dockerfile && docker build -t dcpool-cms-service:test2 .  
         host: "111.231.20.180"
         username: "root"
         privateKey: ${{ secrets.PASSWD }}
