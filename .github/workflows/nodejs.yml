@@ -50,7 +50,7 @@ jobs:
     - name: docker build and docker run 
       uses: garygrossgarten/github-action-ssh@release
       with:
-        command：docker build -f /opt/DC_Pool_CMS/Dockerfile -t dcpool-cms-service:test2  
+        command: docker build -f /opt/DC_Pool_CMS/Dockerfile -t dcpool-cms-service:test2  
         host: "111.231.20.180"
         username: "root"
         privateKey: ${{ secrets.PASSWD }}
