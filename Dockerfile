@@ -5,7 +5,7 @@ RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localt
 
 RUN npm config set registry https://registry.npm.taobao.org
 
-WORKDIR /opt/bin/dc-pool-cms-server
+WORKDIR /opt/bin/dc-pool-cms-servicer
 
 # install dependencies
 COPY package.json .
