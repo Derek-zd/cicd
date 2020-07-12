@@ -33,7 +33,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.PASSWD }}
     # Remote host   远程主机
         REMOTE_HOST: "111.231.20.180"
-    # Remote user  远程主机登录用户
+ -   # Remote user  远程主机登录用户
         REMOTE_USER: "root"
     # Remote port  远程主机登录端口
     #   REMOTE_PORT: 22
@@ -46,3 +46,12 @@ jobs:
     # optional, default is /home/REMOTE_USER/
     # Arguments to pass to rsync
     #ARGS: # optional, default is -rltgoDzvO
+  #   Run ssh command
+     - name: docker build and docker run 
+       uses: garygrossgarten/github-action-ssh@release
+       with:
+         command：docker build -f /opt/DC_Pool_CMS/Dockerfile -t dcpool-cms-service:test2  
+         host: "111.231.20.180"
+         username: "root"
+         privateKey: ${{ secrets.PASSWD }}
+
