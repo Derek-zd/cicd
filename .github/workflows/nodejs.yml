@@ -21,10 +21,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-     - run: rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-     - run: npm config set registry https://registry.npm.taobao.org
-     - run: npm install
-     - run: npm install
+    - run: rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    - run: npm config set registry https://registry.npm.taobao.org
+    - run: npm install
+    - run: npm install
     
     - name: ssh deploy  
       uses: easingthemes/ssh-deploy@v2.1.4
