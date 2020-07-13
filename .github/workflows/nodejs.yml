@@ -22,10 +22,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    #- run: rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-    - run: sudo npm config set registry https://registry.npm.taobao.org
-    - run: sudo npm install
-    - run: sudo npm install
+    
   # Delpoly
     - name: ssh deploy  
       uses: easingthemes/ssh-deploy@v2.1.4
@@ -51,7 +48,7 @@ jobs:
     - name: docker build and docker run 
       uses: garygrossgarten/github-action-ssh@release
       with:
-        command: cd /opt/DC_Pool_CMS/ && docker build -t dcpool-cms-service:test2 .  
+        command: docker stop  dcpool-cms-service:test && docker rm  dcpool-cms-service:test && docker rmi dcpool-cms-service:test && cd /opt/DC_Pool_CMS/ && docker build -t dcpool-cms-service:test . && docker run -itd dcpool-cms-service:test
         host: "111.231.20.180"
         username: "root"
         privateKey: ${{ secrets.PASSWD }}
